@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Shop</string>
+    <string name="register">Registration</string>
+    <string name="login">Sign in</string>
+    <string name="general">General</string>
+    <string name="add">Add</string>
+    <string name="email">EMain</string>
+    <string name="pib">Full name</string>
+    <string name="image">Image</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="selectImage">Select</string>
+    <string name="notifications">Notifications</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="signin">Sign In</string>
+    <string name="signup">Sign Up</string>
 </resources>
