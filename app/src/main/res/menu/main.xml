@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/m_signin"
-        android:title="@string/signin"/>
-    <item android:id="@+id/m_signup"
-        android:title="@string/signup"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/menuGroup1">
+        <item android:id="@+id/m_info"
+            android:icon="@drawable/baseline_info_24"
+            app:showAsAction="ifRoom"
+            android:title="@string/info"/>
+        <item android:id="@+id/m_signin"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/baseline_login_24"
+            android:title="@string/signin"/>
+        <item android:id="@+id/m_signup"
+            android:icon="@drawable/baseline_app_registration_24"
+            app:showAsAction="ifRoom"
+            android:title="@string/signup"/>
+    </group>
+    <group
+        android:id="@+id/menuGroup2">
+        <item android:id="@+id/m_category"
+            app:showAsAction="ifRoom"
+            android:title="@string/category"/>
+        <item android:id="@+id/m_settings"
+            android:orderInCategory="1"
+            android:icon="@drawable/baseline_settings_24"
+            app:showAsAction="ifRoom"
+            android:title="@string/settings"/>
+        <item android:id="@+id/m_LogOut"
+            android:orderInCategory="1"
+            android:icon="@drawable/baseline_logout_24"
+            app:showAsAction="ifRoom"
+            android:title="@string/logout"/>
+    </group>
+    <item android:id="@+id/m_anim"
+        app:showAsAction="never"
+        android:title="@string/animation"/>
+    <item android:id="@+id/m_calc"
+        app:showAsAction="never"
+        android:title="@string/calculator"/>
+    <item android:id="@+id/m_exit"
+        app:showAsAction="never"
+        android:title="@string/exit"/>
 </menu>

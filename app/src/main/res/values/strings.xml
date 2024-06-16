@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Shop</string>
     <string name="register">Registration</string>
-    <string name="login">Sign in</string>
+    <string name="login">Login</string>
     <string name="general">General</string>
     <string name="add">Add</string>
     <string name="email">EMain</string>
@@ -9,10 +9,33 @@
     <string name="image">Image</string>
     <string name="phone">Phone</string>
     <string name="password">Password</string>
-    <string name="selectImage">Select</string>
+    <string name="select">Select</string>
     <string name="notifications">Notifications</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="signin">Sign In</string>
     <string name="signup">Sign Up</string>
+    <string name="logout">Log Out</string>
+    <string name="settings">Settings</string>
+    <string name="authorization">Authorization</string>
+    <string name="remove">Remove</string>
+    <string name="clear">Clear</string>
+    <string name="name">Name</string>
+    <string name="category">Category</string>
+    <string name="button">Button</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="create">Create</string>
+    <string name="left">Left</string>
+    <string name="center">Center</string>
+    <string name="right">Right</string>
+    <string name="info">Info</string>
+    <string name="number_50">50</string>
+    <string name="operatorPlus">+</string>
+    <string name="operatorMinus">-</string>
+    <string name="operatorMultipl">*</string>
+    <string name="operatorDivision">/</string>
+    <string name="exit">Exit</string>
+    <string name="calculator">Calculator</string>
+    <string name="animation">Animation</string>
 </resources>
