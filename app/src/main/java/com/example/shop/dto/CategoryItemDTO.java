@@ -4,6 +4,7 @@ public class CategoryItemDTO {
 
     private int id;
     private String name;
+    private String image;
 
     public CategoryItemDTO() {
     }
@@ -29,8 +30,6 @@ public class CategoryItemDTO {
     public void setName(String name) {
         this.name = name;
     }
-
-    private String image;
 
     public String getImage() {
         return image;

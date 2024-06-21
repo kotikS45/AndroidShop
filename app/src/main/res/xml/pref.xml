@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="notif"
+        android:summary="Enable notifications"
+        android:title="Notifications"/>
+    <EditTextPreference
+        android:dependency="notif"
+        android:key="address"
+        android:summary="Address for notifications"
+        android:title="Address"/>
+    <androidx.preference.PreferenceScreen
+        android:key="screen"
+        android:summary="Description of screen"
+        android:title="Screen"
+        android:fragment="com.example.shop.fragment.SettingsScreenFragment">
+        <androidx.preference.Preference
+            android:key="subscreen_pref"
+            android:summary="Tap to configure additional settings"
+            android:title="Additional Settings"/>
+    </androidx.preference.PreferenceScreen>
+</PreferenceScreen>

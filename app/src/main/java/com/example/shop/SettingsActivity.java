@@ -1,6 +1,8 @@
 package com.example.shop;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +14,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
-public class SettingsActivity extends BaseActivity implements View.OnClickListener {
+import com.example.shop.fragment.SettingsFragment;
 
-    LinearLayout layout;
-    RadioGroup rg;
-    TextView text;
-    Button btnCreate;
-    Button btnClear;
-    int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SettingsActivity extends BaseActivity {
+
+    SharedPreferences preferences;
+    TextView tvNotifStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,42 +42,33 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             return insets;
         });
 
-        layout = (LinearLayout) findViewById(R.id.ll2);
-        rg = (RadioGroup) findViewById(R.id.rgGravity);
-        text = (TextView) findViewById(R.id.etName);
+        tvNotifStatus = (TextView) findViewById(R.id.tvNotifStatus);
 
-        btnCreate = (Button) findViewById(R.id.btnCreate);
-        btnCreate.setOnClickListener(this);
+        if (savedInstanceState == null)
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.settings_container, new MainSettingsFragment())
+                    .commit();
 
-        btnClear = (Button) findViewById(R.id.btnClear);
-        btnClear.setOnClickListener(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
+    protected void onResume() {
+        super.onResume();
 
-        if (id == R.id.btnCreate){
-            LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(wrapContent, wrapContent);
-
-            if (rg.getCheckedRadioButtonId() == R.id.btnLeft){
-                lParams.gravity = Gravity.START;
-            }
-            else if (rg.getCheckedRadioButtonId() == R.id.btnCenter){
-                lParams.gravity = Gravity.CENTER;
-            }
-            else if (rg.getCheckedRadioButtonId() == R.id.btnRight){
-                lParams.gravity = Gravity.END;
-            }
-
-            Button btnNew = new Button(this);
-            String str = text.getText().toString();
-            btnNew.setText(str);
-            layout.addView(btnNew, lParams);
+        if (preferences.getBoolean("notif", false)){
+            tvNotifStatus.setText(R.string.on_caps);
         }
-        else if (id == R.id.btnClear){
-            layout.removeAllViews();
-            Toast.makeText(this, R.string.remove, Toast.LENGTH_SHORT).show();
+        else {
+            tvNotifStatus.setText(R.string.off_caps);
+        }
+    }
+
+    public static class MainSettingsFragment extends PreferenceFragmentCompat {
+        @Override
+        public void onCreatePreferences(@Nullable Bundle savedInstanceState, String rootKey) {
+            setPreferencesFromResource(R.xml.pref, rootKey);
         }
     }
 }

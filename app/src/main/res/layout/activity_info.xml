@@ -35,4 +35,22 @@
             android:id="@+id/infoButton2"
             android:layout_weight="1"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="2dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1pt"
+            android:text="@string/time"
+            android:id="@+id/btnTime"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1pt"
+            android:text="@string/date"
+            android:id="@+id/btnDate"/>
+    </LinearLayout>
 </LinearLayout>

@@ -8,7 +8,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
-    protected boolean Authorized = false;
+    private static boolean Authorized = false;
+
+    public final boolean getAuthorized() {
+        return Authorized;
+    }
+
+    public final void setAuthorized(boolean authorized) {
+        Authorized = authorized;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
@@ -30,11 +39,14 @@ public class BaseActivity extends AppCompatActivity {
         if (select==R.id.m_category){
             intent = new Intent(BaseActivity.this, CategoryActivity.class);
         }
+        else if (select==R.id.m_profile){
+            intent = mProfile(intent);
+        }
         else if(select==R.id.m_signin) {
-            intent = new Intent(BaseActivity.this, LoginActivity.class);
+            intent = mSignIn(intent);
         }
         else if(select==R.id.m_signup) {
-            intent = new Intent(BaseActivity.this, RegisterActivity.class);
+            intent = mSignUp(intent);
         }
         else if(select==R.id.m_settings) {
             intent = new Intent(BaseActivity.this, SettingsActivity.class);
@@ -46,11 +58,17 @@ public class BaseActivity extends AppCompatActivity {
         else if(select==R.id.m_info) {
             intent = new Intent(BaseActivity.this, InfoActivity.class);
         }
+        else if(select==R.id.m_constructor) {
+            intent = mConstructor(intent);
+        }
         else if(select==R.id.m_anim) {
             intent = new Intent(BaseActivity.this, AnimationActivity.class);
         }
         else if(select==R.id.m_calc) {
             intent = new Intent(BaseActivity.this, CalculatorActivity.class);
+        }
+        else if(select==R.id.m_contacts) {
+            intent = mContacts(intent);
         }
         else if(select==R.id.m_exit) {
             finish();
@@ -60,5 +78,25 @@ public class BaseActivity extends AppCompatActivity {
         }
         startActivity(intent);
         return true;
+    }
+
+    protected Intent mConstructor (Intent intent) {
+        return new Intent(BaseActivity.this, ConstructorActivity.class);
+    }
+
+    protected Intent mContacts (Intent intent) {
+        return new Intent(BaseActivity.this, ContactsActivity.class);
+    }
+
+    protected Intent mSignUp (Intent intent) {
+        return new Intent(BaseActivity.this, RegisterActivity.class);
+    }
+
+    protected Intent mSignIn (Intent intent) {
+        return new Intent(BaseActivity.this, LoginActivity.class);
+    }
+
+    protected Intent mProfile (Intent intent) {
+        return new Intent(BaseActivity.this, ProfileActivity.class);
     }
 }

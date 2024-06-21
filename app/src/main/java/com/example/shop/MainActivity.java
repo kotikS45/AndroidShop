@@ -1,86 +1,74 @@
 package com.example.shop;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.TextView;
+import android.util.Log;
+import androidx.viewpager2.widget.ViewPager2;
 
-import androidx.core.content.ContextCompat;
-
-import java.util.ArrayList;
-import java.util.Objects;
+import com.example.shop.page.MainFragment1;
+import com.example.shop.page.ViewPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends BaseActivity {
 
-    Button b1, b2, b3;
-    TextView text;
-    ArrayList<View> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        b1 = (Button) findViewById(R.id.Button1);
-        b2 = (Button) findViewById(R.id.Button2);
-        b3 = (Button) findViewById(R.id.Button3);
+        loadTabs();
 
-        text = (TextView) findViewById(R.id.textSelected);
+        Log.d(TAG, "MainActivity: onCreate()");
+    }
 
-        registerForContextMenu(b1);
-        registerForContextMenu(b2);
-        registerForContextMenu(b3);
-        registerForContextMenu(text);
+    private void loadTabs() {
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        adapter.addFragment(new MainFragment1(), "General");
+
+        viewPager.setAdapter(adapter);
+
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> tab.setText(adapter.getPageTitle(position))
+        ).attach();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "MainActivity: onStart()");
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-
-        int viewId = v.getId();
-        if (viewId == R.id.Button1 || viewId == R.id.Button2 || viewId == R.id.Button3) {
-            getMenuInflater().inflate(R.menu.context_select_button, menu);
-        } else if (viewId == R.id.textSelected) {
-            getMenuInflater().inflate(R.menu.context_clear_text, menu);
-        }
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "MainActivity: onResume()");
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-        View view = null;
-        Button button = null;
+    public void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "MainActivity: onRestart()");
+    }
 
-        if (view != null) {
-            if (view.getId() == R.id.Button1) {
-                button = findViewById(R.id.Button1);
-            } else if (view.getId() == R.id.Button2) {
-                button = findViewById(R.id.Button2);
-            } else if (view.getId() == R.id.Button3) {
-                button = findViewById(R.id.Button3);
-            } else if (view.getId() == R.id.textSelected) {
-                ((TextView)findViewById(R.id.textSelected)).setText("");
-            }
-        }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "MainActivity: onPause()");
+    }
 
-        if (button != null) {
-            if (itemId == R.id.m_contextSelect) {
-                button.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            } else if (itemId == R.id.m_contextUnselect) {
-                button.setBackgroundColor(ContextCompat.getColor(this, R.color.black));
-            }
-            if (!list.contains(button)){
-                list.add(button);
-                StringBuilder newText = new StringBuilder();
-                for (int i = 0; i < list.size(); i++) {
-                    newText.append(list.get(i)).append(" ");
-                }
-                text.setText(newText.toString());
-            }
-        }
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "MainActivity: onStop()");
+    }
 
-        return super.onContextItemSelected(item);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "MainActivity: onDestroy()");
     }
 }

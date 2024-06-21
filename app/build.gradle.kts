@@ -38,6 +38,10 @@ dependencies {
 
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("androidx.preference:preference:1.1.1")
+
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.google.android.material:material:1.3.0")
 
     implementation(libs.appcompat)
     implementation(libs.material)

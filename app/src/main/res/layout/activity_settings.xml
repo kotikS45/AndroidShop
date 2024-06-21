@@ -7,56 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
-
-    <RadioGroup
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/rgGravity">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/left"
-            android:id="@+id/btnLeft"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/center"
-            android:id="@+id/btnCenter"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/right"
-            android:id="@+id/btnRight"/>
-    </RadioGroup>
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/notifications"
+        android:textSize="24sp"/>
+    <TextView
+        android:id="@+id/tvNotifStatus"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ll1"
-        android:orientation="vertical">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/etName"
-            android:autofillHints="Name"
-            android:fadeScrollbars="true"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create"
-            android:id="@+id/btnCreate"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/clear"
-            android:id="@+id/btnClear"/>
-    </LinearLayout>
-    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:textSize="24sp"/>
+    <FrameLayout
+        android:id="@+id/settings_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ll2"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

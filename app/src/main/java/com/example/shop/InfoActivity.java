@@ -1,6 +1,8 @@
 package com.example.shop;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -11,14 +13,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class InfoActivity extends BaseActivity implements SeekBar.OnSeekBarChangeListener {
+public class InfoActivity extends BaseActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
     SeekBar sb;
-    Button b1;
-    Button b2;
+    Button b1, b2, btnTime, btnDate;
 
-    LinearLayout.LayoutParams params1;
-    LinearLayout.LayoutParams params2;
+    LinearLayout.LayoutParams params1, params2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,11 @@ public class InfoActivity extends BaseActivity implements SeekBar.OnSeekBarChang
 
         b1.setText(R.string.number_50);
         b2.setText(R.string.number_50);
+
+        btnTime = (Button) findViewById(R.id.btnTime);
+        btnDate = (Button) findViewById(R.id.btnDate);
+        btnTime.setOnClickListener(this);
+        btnDate.setOnClickListener(this);
     }
 
     @Override
@@ -64,5 +69,21 @@ public class InfoActivity extends BaseActivity implements SeekBar.OnSeekBarChang
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = null;
+
+        if (v.getId() == R.id.btnTime){
+            intent = new Intent("shop.app.action.showTime");
+        }
+        else if (v.getId() == R.id.btnDate) {
+            intent = new Intent("shop.app.action.showDate");
+        }
+
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 }

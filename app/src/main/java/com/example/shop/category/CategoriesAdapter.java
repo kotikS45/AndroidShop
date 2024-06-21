@@ -36,7 +36,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryCardViewHold
         if(items!=null && position<items.size()) {
             CategoryItemDTO item = items.get(position);
             holder.getCategoryName().setText(item.getName());
-            String imageUrl = Config.BASE_URL + "images/" + item.getImage();
+            String imageUrl = Config.BASE_URL + "/images/" + item.getImage();
             Glide.with(holder.itemView.getContext())
                     .load(imageUrl)
                     .placeholder(R.drawable.placeholder_image)
