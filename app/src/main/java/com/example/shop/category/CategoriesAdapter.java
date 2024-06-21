@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.shop.R;
 import com.example.shop.config.Config;
 import com.example.shop.dto.CategoryItemDTO;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -37,11 +38,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryCardViewHold
             CategoryItemDTO item = items.get(position);
             holder.getCategoryName().setText(item.getName());
             String imageUrl = Config.BASE_URL + "/images/" + item.getImage();
-            Glide.with(holder.itemView.getContext())
+            Picasso.get()
                     .load(imageUrl)
                     .placeholder(R.drawable.placeholder_image)
                     .error(R.drawable.error_image)
-                    .apply(new RequestOptions().override(400))
                     .into(holder.getIvCategoryImage());
         }
     }

@@ -26,8 +26,8 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
-        menu.setGroupVisible(R.id.menuGroup1, !Authorized);
-        menu.setGroupVisible(R.id.menuGroup2, Authorized);
+        menu.setGroupVisible(R.id.menuGroup1, true);
+        menu.setGroupVisible(R.id.menuGroup2, true);
 
         return super.onPrepareOptionsMenu(menu);
     }
